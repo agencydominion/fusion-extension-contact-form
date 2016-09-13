@@ -27,7 +27,7 @@ function fsn_init_contact_form() {
 			$contact_form = get_post($contact_form_id);
 			if (!empty($contact_form)) {
 				$output .= '<div class="fsn-contact-form '. fsn_style_params_class($atts) .'">';
-					$output .= do_shortcode('[contact-form-7 id="'. $contact_form_id .'" title="'. $contact_form->post_title .'"'. (!empty($form_class) ? ' html_class="'. $form_class .'"' : '') .']');
+					$output .= do_shortcode('[contact-form-7 id="'. esc_attr($contact_form_id) .'" title="'. $contact_form->post_title .'"'. (!empty($form_class) ? ' html_class="'. $form_class .'"' : '') .']');
 				$output .= '</div>';
 			}
 		}
