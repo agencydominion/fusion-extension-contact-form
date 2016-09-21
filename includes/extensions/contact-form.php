@@ -40,15 +40,6 @@ function fsn_init_contact_form() {
 	//MAP SHORTCODE
 	if (function_exists('fsn_map') && function_exists('wpcf7_contact_form')) {
 		
-		$contact_forms_array = array();
-		$contact_forms_array[''] = 'Select form.';
-		$contact_forms = fsn_get_post_ids_titles_by_type('wpcf7_contact_form');
-		if (!empty($contact_forms)) {
-			foreach($contact_forms as $contact_form) {
-				$contact_forms_array[$contact_form['id']] = $contact_form['post_title'];
-			}
-		}
-		
 		fsn_map(array(
 			'name' => __('Contact Form', 'fusion-extension-contact-form'),
 			'shortcode_tag' => 'fsn_contact_form',
@@ -56,8 +47,8 @@ function fsn_init_contact_form() {
 			'icon' => 'mail_outline',
 			'params' => array(
 				array(
-					'type' => 'select',
-					'options' => $contact_forms_array,
+					'type' => 'select_post',
+					'post_type' => 'wpcf7_contact_form',
 					'param_name' => 'contact_form_id',
 					'label' => __('Contact Form', 'fusion-extension-contact-form')
 				),
