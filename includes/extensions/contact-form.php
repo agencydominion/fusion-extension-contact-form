@@ -11,33 +11,13 @@
  * @since 1.0.0
  */
 
+/**
+ * Map Shortcode
+ */
+
 add_action('init', 'fsn_init_contact_form', 12);
 function fsn_init_contact_form() {
 	
-	//OUTPUT SHORTCODE
-	function fsn_contact_form_shortcode( $atts, $content ) {
-		extract( shortcode_atts( array(
-			'contact_form_id' => '',
-			'form_class' => ''
-		), $atts ) );
-		
-		$output = '';
-		
-		if (!empty($contact_form_id)) {
-			$contact_form = get_post($contact_form_id);
-			if (!empty($contact_form)) {
-				$output .= '<div class="fsn-contact-form '. fsn_style_params_class($atts) .'">';
-					$output .= do_shortcode('[contact-form-7 id="'. esc_attr($contact_form_id) .'" title="'. $contact_form->post_title .'"'. (!empty($form_class) ? ' html_class="'. $form_class .'"' : '') .']');
-				$output .= '</div>';
-			}
-		}
-		
-		return $output;
-		
-	}
-	add_shortcode('fsn_contact_form', 'fsn_contact_form_shortcode');
-	
-	//MAP SHORTCODE
 	if (function_exists('fsn_map') && function_exists('wpcf7_contact_form')) {
 		
 		fsn_map(array(
@@ -63,4 +43,31 @@ function fsn_init_contact_form() {
 		));
 	}
 }
+
+/**
+ * Output Shortcode
+ */
+
+function fsn_contact_form_shortcode( $atts, $content ) {
+	extract( shortcode_atts( array(
+		'contact_form_id' => '',
+		'form_class' => ''
+	), $atts ) );
+	
+	$output = '';
+	
+	if (!empty($contact_form_id)) {
+		$contact_form = get_post($contact_form_id);
+		if (!empty($contact_form)) {
+			$output .= '<div class="fsn-contact-form '. fsn_style_params_class($atts) .'">';
+				$output .= do_shortcode('[contact-form-7 id="'. esc_attr($contact_form_id) .'" title="'. $contact_form->post_title .'"'. (!empty($form_class) ? ' html_class="'. $form_class .'"' : '') .']');
+			$output .= '</div>';
+		}
+	}
+	
+	return $output;
+	
+}
+add_shortcode('fsn_contact_form', 'fsn_contact_form_shortcode');
+
 ?>
