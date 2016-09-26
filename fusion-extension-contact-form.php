@@ -4,9 +4,9 @@
  */
 /**
  * Plugin Name: Fusion : Extension - Contact Form
- * Plugin URI: http://fusion.1867dev.com
+ * Plugin URI: http://www.agencydominion.com/fusion/
  * Description: Contact Form Extension Package for Fusion.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Agency Dominion
  * Author URI: http://agencydominion.com
  * License: GPL2
