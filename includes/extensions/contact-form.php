@@ -37,7 +37,7 @@ function fsn_init_contact_form() {
 					'param_name' => 'form_class',
 					'label' => __('Form Class', 'fusion-extension-contact-form'),
 					'help' => __('Input CSS class for form element.', 'fusion-extension-contact-form'),
-					'section' => 'advanced'
+					'section' => 'style'
 				)
 			)
 		));
