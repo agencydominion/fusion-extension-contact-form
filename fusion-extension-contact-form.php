@@ -6,9 +6,11 @@
  * Plugin Name: Fusion : Extension - Contact Form
  * Plugin URI: http://www.agencydominion.com/fusion/
  * Description: Contact Form Extension Package for Fusion.
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author: Agency Dominion
  * Author URI: http://agencydominion.com
+ * Text Domain: fusion-extension-contact-form
+ * Domain Path: /languages/
  * License: GPL2
  */
  
@@ -25,8 +27,19 @@ class FusionExtensionContactForm	{
 	public function __construct() {
 						
 		// Initialize the language files
-		load_plugin_textdomain( 'fusion-extension-contact-form', false, plugin_dir_url( __FILE__ ) . 'languages' );
+		add_action('plugins_loaded', array($this, 'load_textdomain'));
 		
+	}
+	
+	/**
+	 * Load Textdomain
+	 *
+	 * @since 1.1.4
+	 *
+	 */
+	 
+	public function load_textdomain() {
+		load_plugin_textdomain( 'fusion-extension-contact-form', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 }
 
